@@ -5,12 +5,13 @@ from PyQt6.QtCore import Qt, QRectF, QSize
 from PyQt6 import uic
 import sys
 import random
+from ui_main import Ui_Form
 
 
-class A(QWidget):
+class A(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.b_1.clicked.connect(self.creats)
         self.b = False
     
@@ -21,7 +22,7 @@ class A(QWidget):
         if not self.b:
             return
         painter = QPainter(self)
-        painter.setBrush(QColor('yellow'))
+        painter.setBrush(QColor(random.randint(0, 256), random.randint(0, 256), random.randint(0, 256)))
         y = random.randint(1, 100)
         painter.drawEllipse(200, 200, y, y)
 
