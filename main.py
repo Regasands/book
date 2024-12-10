@@ -4,6 +4,7 @@ from PyQt6.QtCore import Qt, QRectF, QSize
 
 from PyQt6 import uic
 import sys
+import random
 
 
 class A(QWidget):
@@ -14,14 +15,15 @@ class A(QWidget):
         self.b = False
     
     def creats(self):
-        self.b = not self.b
+        self.b = True
         self.update()
     def paintEvent(self, event):
         if not self.b:
             return
         painter = QPainter(self)
         painter.setBrush(QColor('yellow'))
-        painter.drawEllipse(200, 200, 30, 30)
+        y = random.randint(1, 100)
+        painter.drawEllipse(200, 200, y, y)
 
 
 
